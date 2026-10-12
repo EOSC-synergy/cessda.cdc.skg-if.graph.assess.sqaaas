@@ -1,0 +1,46 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.cdc.skg-if.graph:
+      branch: main
+      repo: https://github.com/cessda/cessda.cdc.skg-if.graph
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.cdc.skg-if.graph git:
+        commands:
+        - /usr/bin/env sh .sqa/script.cherry_sympathetic_hornbill.sh
+        container: qc.acc_frost_anxious_spren
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.cdc.skg-if.graph find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.clementine_aware_owl.sh
+        container: qc.doc_cerise_understanding_frog
+      github.com/cessda/cessda.cdc.skg-if.graph git:
+        commands:
+        - /usr/bin/env sh .sqa/script.jade_realistic_spren.sh
+        container: qc.doc_bluebell_humble_hare
+      github.com/cessda/cessda.cdc.skg-if.graph markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.pumpkin_compassionate_seahorse.sh
+        container: qc.doc_grege_enigmatic_otter
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.cdc.skg-if.graph licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.pistachio_helpful_skunk.sh
+        container: qc.lic_tan_diplomatic_quail
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.cdc.skg-if.graph get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.glaucous_analytical_otter.sh
+        container: qc.ver_seafoam_clever_panther
+timeout: 5400
